@@ -1,0 +1,688 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>SYSTEM HACKING</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="bd8d5cc1-f2d4-45a2-b3c4-fc40a7c1d873" class="page sans"><header><h1 class="page-title">SYSTEM HACKING</h1><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>태그</th><td></td></tr></tbody></table></header><div class="page-body"><h2 id="842897cc-f5e4-40e6-9d8b-227acee267b9" class="">✅ Program Download</h2><hr id="deac1145-3b9b-4f90-aad8-de18f5471c0c"/><p id="4c97c340-0a3d-45c6-86e7-695956adecd9" class="">
+</p><h3 id="eb4648e4-c6b5-421d-8317-21d167c064ce" class="">📌  VMware Download
+</h3><p id="34bf3aa1-ce79-4a93-a6a2-7909a7755286" class=""><strong>VMware Workstation Pro 16 Download</strong></p><figure id="3913a942-37a7-4a29-800a-c0e3a20dc894"><a href="https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Download VMware Workstation Pro</div><div class="bookmark-description">VMware Workstation Pro is the industry standard desktop hypervisor for running virtual machines on Linux or Windows PCs. Discover why.</div></div><div class="bookmark-href"><img src="https://www.vmware.com/favicon.ico" class="icon bookmark-icon"/>https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html</div></div><img src="https://www.vmware.com/content/dam/digitalmarketing/vmware/en/images/icons/vmw-avatar-corporate.png" class="bookmark-image"/></a></figure><p id="236f1d92-d906-4121-bbaa-36204cb9be75" class="">
+</p><p id="b9df6fee-52ea-4e1c-8db4-be5174a95850" class=""><strong>VMware Workstation Pro 16 EXE File</strong></p><figure id="1c5aec0a-8929-401c-80d3-9f7de463c03e"><div class="source"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/VMware-workstation-full-16.1.2-17966106.zip">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8ab57e67-7ffa-4674-997b-9a8895396292/VMware-workstation-full-16.1.2-17966106.zip</a></div></figure><p id="3ced6392-bb43-4eb3-9102-8c52a91292d7" class="">
+</p><p id="90f50d8f-68ee-4795-981b-682f5fb28f76" class=""><strong>VMware Workstation Pro 16 license keys</strong></p><ol type="1" id="e7c48491-ad46-4fab-8a60-8dafbe16d810" class="numbered-list" start="1"><li>ZF3R0-FHED2-M80TY-8QYGC-NPKYF</li></ol><ol type="1" id="737eca98-f910-4292-8890-c25fbc1d97e8" class="numbered-list" start="2"><li>YF390-0HF8P-M81RQ-2DXQE-M2UT6</li></ol><ol type="1" id="889a6b69-2410-4dc4-9957-27684edf07ce" class="numbered-list" start="3"><li>ZF71R-DMX85-08DQY-8YMNC-PPHV8</li></ol><p id="d294b1c6-1500-46e8-adea-33385a970953" class="">
+</p><h3 id="86b6a553-3bda-4bcb-a5aa-33fc221f778b" class="">📌  SSH Connection Program Download</h3><h3 id="ac151461-ae54-43ef-a0f6-f50ddcd15403" class="">▪️ Putty</h3><p id="47c14afd-c8b6-4207-a45e-9fc4542ba9bb" class="">
+</p><p id="7503280b-229e-43e1-8da1-b2b8702235dc" class=""><strong>Putty Download</strong></p><figure id="0e10e0da-4ce4-466b-b915-acf5baf45c64"><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Download PuTTY: latest release (0.76)</div><div class="bookmark-description">This page contains download links for the latest released version of PuTTY. Currently this is 0.76, released on 2021-07-17. When new releases come out, this page will update to contain the latest, so this is a good page to bookmark or link to. Alternatively, here is a permanent link to the 0.76 release.</div></div><div class="bookmark-href"><img src="https://www.chiark.greenend.org.uk/~sgtatham/putty/putty.ico" class="icon bookmark-icon"/>https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html</div></div></a></figure><p id="1b52fcf5-8de2-4a2e-8aca-b01445d7e521" class="">
+</p><p id="c2a656b1-f658-44e1-bed5-9ee54a431aad" class=""><strong>Putty</strong> <strong>EXE File</strong></p><figure id="a5e81b22-d028-43ef-8751-3800db1a1658"><div class="source"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/Putty.zip">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/96c071fd-a130-4a1a-a378-67c24f700524/Putty.zip</a></div></figure><p id="3d73b075-a903-4961-bbf2-70a082e8957c" class="">
+</p><h3 id="d061578b-11cc-4e1d-9dda-f8f8f08d1c3f" class="">▪️ XShell</h3><p id="fb8b0bda-22ee-4303-8490-07df656c2a0f" class="">
+</p><p id="d3615e0a-5180-4a9b-81af-997ee8378ff9" class=""><strong>XShell Download</strong></p><figure id="9c077628-037d-49f6-8bec-ca0adb538739"><a href="https://www.netsarang.com/ko/free-for-home-school/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">무료 라이선스</div><div class="bookmark-description">무료 라이선스 무료 사용자의 최고의 선택 Xshell과 Xftp 무료 라이선스는 성능이나 기능적인 면에서 이에 필적할 만한 것이 없습니다. 어떤 것도 따라올 수 없습니다. 가정에서 개인 서버를 관리하거나 관리 기술을 연마할 수 있습니다. 저희 무료 라이선스는 개인적이고 비상업적 용도에 사용 가능합니다. 무료 라이선스는 인가된 교육</div></div><div class="bookmark-href"><img src="https://www.netsarang.com/wp-content/uploads/2018/12/favicon.ico" class="icon bookmark-icon"/>https://www.netsarang.com/ko/free-for-home-school/</div></div></a></figure><p id="da3472e1-0c12-4451-b6c6-73a3d2050d3c" class="">
+</p><p id="d46b4668-ff6d-4496-bba6-92b7c63c83ce" class=""><strong>XShell EXE File</strong></p><figure id="dc3fd09e-75c4-435c-9806-fc8077ecab8d"><div class="source"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/Xshell-7.0.0077p.zip">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5cc2fc9a-cca8-429c-b11d-e4a015f2dcae/Xshell-7.0.0077p.zip</a></div></figure><p id="dc597902-0af2-4f0c-9946-76a5668db64a" class="">
+</p><h3 id="8809307c-991a-43f5-b0c9-5b84d6aa1cf3" class="">📌  FTZ DownLoad
+</h3><figure id="921fe3d9-a6c3-4071-87e2-d72ebc79df62"><div class="source"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/FTZ_ISO.zip">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/193bc00f-0852-4ed7-9e42-79b664db6178/FTZ_ISO.zip</a></div></figure><figure id="60376b42-41d3-4826-893b-76dd17406360"><div class="source"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/Vmware_Redhat_9_FTZ.zip">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/18f63aab-9836-40cd-b633-0d7a6479885e/Vmware_Redhat_9_FTZ.zip</a></div></figure><p id="a7a4b01d-e73e-4644-ad6c-ee63eebad5c1" class="">
+</p><h2 id="91af000d-de5f-4a5f-a433-f93e940eb5e2" class="">✅ <strong>VMware Workstation Pro 16 Install</strong></h2><hr id="83389bbc-a0d5-441a-94fc-2e73a188d579"/><p id="52cf9e12-f0f8-46a8-b8e0-2a5204d6106a" class="">
+</p><figure id="37ca68ba-b090-40bf-bd5f-f1db43283703" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/vmware_%EC%84%A4%EC%B9%98.png"><img style="width:192px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/vmware_%EC%84%A4%EC%B9%98.png"/></a></figure><figure id="b87c4925-78f5-4866-a03e-872ab4da8f33" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/01.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/01.png"/></a></figure><figure id="bc02309c-6f92-4345-8678-2c6a4cc60585" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/02.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/02.png"/></a></figure><figure id="12a90e0e-83dd-4169-8ef6-8a29bbc65896" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/03.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/03.png"/></a></figure><figure id="5f124827-2eb9-4fcd-8159-27cdeb007710" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/04.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/04.png"/></a></figure><figure id="fbbb62b7-7003-45ee-9edd-dd323f3e0789" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/05.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/05.png"/></a></figure><figure id="b68dfe70-1474-4362-bda6-87d64d84cd43" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/06.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/06.png"/></a></figure><figure id="260112bf-bdaa-4929-b52a-aac0dbc4c9b2" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/07.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/07.png"/></a></figure><figure id="4acb4baf-0a6d-4155-ac7d-c30f4fabe5c4" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/08.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/08.png"/></a></figure><figure id="8fd24c0e-2b01-45d8-8bb0-a09babe85be5" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%EC%99%84%EB%A3%8C.png"><img style="width:144px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%EC%99%84%EB%A3%8C.png"/></a></figure><p id="6b5b41cb-acb2-47fd-bef6-371471be7e50" class="">
+</p><h2 id="fa5fcfd9-8696-4c13-8b03-66d12c7c4a62" class="">✅ VMware FTZ Setting </h2><p id="8910a3d4-7e1c-48b7-98db-9781b711623c" class="">
+</p><figure id="7da49d4c-3fd0-4c43-8fc6-050fe7cdf513" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/01%201.png"><img style="width:576px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/01%201.png"/></a></figure><figure id="c48f4183-f192-45b8-bfc4-42f2f89c5c2a" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/02%201.png"><img style="width:576px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/02%201.png"/></a></figure><figure id="b4397e2a-3bec-4477-b051-21c407ff8aac" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/03%201.png"><img style="width:576px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/03%201.png"/></a></figure><figure id="8618dfc6-18c7-472e-9b12-e1360340292c" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/04%201.png"><img style="width:576px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/04%201.png"/></a></figure><figure id="d9c3dc66-2fba-4b75-ab8c-07923e87d9f3" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/05%201.png"><img style="width:576px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/05%201.png"/></a></figure><figure id="ba30a920-169e-44c7-a73b-fd8e1f0d4aa0" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/06%201.png"><img style="width:576px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/06%201.png"/></a></figure><figure id="c6c87c20-17e6-4f3d-9e2b-c28f225638c0" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/07%201.png"><img style="width:576px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/07%201.png"/></a></figure><figure id="a8dd913b-d396-4ae9-8b0d-b533878fb6bc" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/08%201.png"><img style="width:576px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/08%201.png"/></a></figure><figure id="8cd31222-dfe0-4f21-8b2e-4890cb54a4f3" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/09.png"><img style="width:576px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/09.png"/></a></figure><figure id="6c6e1af8-aba4-42c0-b53f-3bee4f85370f" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/10.png"><img style="width:576px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/10.png"/></a></figure><p id="e09481e8-58d7-4712-98af-d4ee6fcc06b6" class="">
+</p><h2 id="939d5805-7387-4dc3-bab7-3762f6d6ab80" class="">✅ Putty SSH Connection</h2><p id="e9f42800-d8ce-4f35-a7be-d17b3a5a2c1a" class="">
+</p><figure id="eb71bed9-5a1f-4cb8-9861-e8488cad6dce" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/01%202.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/01%202.png"/></a></figure><figure id="b173314d-e9c6-4615-8266-23815be923d0" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/02%202.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/02%202.png"/></a></figure><figure id="1b18ddeb-ecf0-4743-b510-3d83a106764d" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/03%202.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/03%202.png"/></a></figure><figure id="f79c290b-c04e-40d0-b9d1-1d9978b36941" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/04%202.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/04%202.png"/></a></figure><figure id="f191fd39-815a-467f-a8aa-510c7c15afb0" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/05%202.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/05%202.png"/></a></figure><figure id="4ed947ce-9157-4004-b1f4-8664fead3990" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/06%202.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/06%202.png"/></a></figure><figure id="98c7bacb-8493-4d9d-888f-9374e630166a" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/07%202.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/07%202.png"/></a></figure><figure id="85377ec3-4075-48d5-86b9-83101021df23" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/08%202.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/08%202.png"/></a></figure><figure id="1b774faa-5eb2-447b-b853-75e4f7d62544" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/09%201.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/09%201.png"/></a></figure><figure id="2b09f00e-238c-49d7-b39d-5cd0f4c96254" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/10%201.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/10%201.png"/></a></figure><figure id="f8bd43f9-fc7c-4b7a-b840-621fe9a0169b" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/11.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/11.png"/></a></figure><figure id="3bc0fc54-2433-4b47-9a37-f3e64d5d11d4" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/12.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/12.png"/></a></figure><figure id="fd784d7f-09f1-41bc-96ce-9928ad55d8e2" class="image"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/13.png"><img style="width:432px" src="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/13.png"/></a></figure><p id="a323e471-28c2-45bf-a132-3b061ebfeee2" class="">
+</p><figure id="671b1a6f-ce20-4cad-8336-0c2fd4ae588a" class="link-to-page"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%5BFTZ%5D%20Level%2001%20671b1a6fce204cad83360c2fd4ae588a.html">[FTZ] Level 01</a></figure><figure id="1c9e6b08-62d0-4d3b-b9f1-d6f879c94507" class="link-to-page"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%5BFTZ%5D%20Level%2002%201c9e6b0862d04d3bb9f1d6f879c94507.html">[FTZ] Level 02</a></figure><figure id="81078114-d706-406d-bf1d-c145fd4044ac" class="link-to-page"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%5BFTZ%5D%20Level%2003%2081078114d706406dbf1dc145fd4044ac.html">[FTZ] Level 03</a></figure><figure id="cdc29d93-2beb-4a6c-8d3c-ae7eebf94d74" class="link-to-page"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%5BFTZ%5D%20Level%2004%20cdc29d932beb4a6c8d3cae7eebf94d74.html">[FTZ] Level 04</a></figure><figure id="6dcd3aac-a350-4ad4-85e8-19e9ace89372" class="link-to-page"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%5BFTZ%5D%20Level%2005%206dcd3aaca3504ad485e819e9ace89372.html">[FTZ] Level 05</a></figure><figure id="e63f75e2-2281-4b50-82a6-a107b420a82e" class="link-to-page"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%5BFTZ%5D%20Level%2006%20e63f75e222814b5082a6a107b420a82e.html">[FTZ] Level 06</a></figure><figure id="a4ebd91b-c71a-4b6e-b62e-106d397178d9" class="link-to-page"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%5BFTZ%5D%20Level%2007%20a4ebd91bc71a4b6eb62e106d397178d9.html">[FTZ] Level 07</a></figure><figure id="6963f6b2-a4a5-4777-8e69-a00d3be2a39d" class="link-to-page"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%5BFTZ%5D%20Level%2008%206963f6b2a4a547778e69a00d3be2a39d.html">[FTZ] Level 08</a></figure><figure id="ea01f58c-c604-4847-868c-761772ce5eba" class="link-to-page"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%5BFTZ%5D%20Level%2009%20ea01f58cc6044847868c761772ce5eba.html">[FTZ] Level 09</a></figure><figure id="795d69f9-a219-4da4-ba7a-e8df98793355" class="link-to-page"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%5BFTZ%5D%20Level%2010%20795d69f9a2194da4ba7ae8df98793355.html">[FTZ] Level 10</a></figure><figure id="0234d298-9784-4d5b-a902-ca2bb7759011" class="link-to-page"><a href="SYSTEM%20HACKING%20bd8d5cc1f2d445a2b3c4fc40a7c1d873/%5BFTZ%5D%20Level%2011%200234d29897844d5ba902ca2bb7759011.html">[FTZ] Level 11</a></figure></div></article></body></html>
